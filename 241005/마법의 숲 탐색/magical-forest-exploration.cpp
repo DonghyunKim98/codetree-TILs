@@ -30,7 +30,6 @@ void resetMap() {
 // 북쪽에서 남쪽으로 내려와야하므로 중심이 (y, x)에 위치할때의 범위와 (y-1, x)에 위치할떄의 범위 모두 확인합니다
 bool canGo(int y, int x) {
     bool flag = 0 <= x-1 && x+1 < C && y+1 < R+3;
-    flag = flag && (A[y-2][x] == 0);
     flag = flag && (A[y-1][x-1] == 0);
     flag = flag && (A[y-1][x] == 0);
     flag = flag && (A[y-1][x+1] == 0);
@@ -61,7 +60,10 @@ int bfs(int y, int x) {
             int ny = cur.first + dy[k], nx = cur.second + dx[k];
             // 정령의 움직임은 골렘 내부이거나
             // 골렘의 탈출구에 위치하고 있다면 다른 골렘으로 옮겨 갈 수 있습니다
-            if (inRange(ny, nx) && !visit[ny][nx] && (A[ny][nx] == A[cur.first][cur.second] || (A[ny][nx] != 0 && isExit[cur.first][cur.second]))) {
+            if (inRange(ny, nx) 
+                && !visit[ny][nx] 
+                && (A[ny][nx] == A[cur.first][cur.second] 
+                    || (A[ny][nx] != 0 && isExit[cur.first][cur.second]))) {
                 q.push(make_pair(ny, nx));
                 visit[ny][nx] = true;
                 result = max(result, ny);
@@ -90,7 +92,7 @@ void down(int y, int x, int d, int id) {
     }
     else {
         // 1, 2, 3의 움직임을 모두 취할 수 없을떄 입니다.
-        if (!inRange(y-1, x-1) || !inRange(y+1, x+1)) {
+        if (!inRange(y-1, x+1) || !inRange(y+1, x+1)) {
             // 숲을 벗어나는 경우 모든 골렘이 숲을 빠져나갑니다
             resetMap();
         } else {
