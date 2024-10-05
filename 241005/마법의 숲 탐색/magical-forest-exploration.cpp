@@ -131,7 +131,7 @@ void down(int y, int x, int d, int id)
 
     isExit[y + dy[d]][x + dx[d]] = true;
 
-    ans += bfs(y, x) - 2;
+    ans += bfs(y, x) - 3 + 1;
 }
 
 int main()
