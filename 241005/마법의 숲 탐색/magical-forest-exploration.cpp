@@ -145,7 +145,7 @@ int main()
         int x, d;
         cin >> x >> d; // 골렘의 출발 x좌표, 방향 d를 입력받습니다
         x--;
-        down(1, x, d, id);
+        down(0, x, d, id);
     }
 
     cout << ans << endl;
