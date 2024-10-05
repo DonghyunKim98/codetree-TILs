@@ -92,7 +92,7 @@ void down(int y, int x, int d, int id) {
     }
     else {
         // 1, 2, 3의 움직임을 모두 취할 수 없을떄 입니다.
-        if (!inRange(y-1, x+1) || !inRange(y+1, x+1)) {
+        if (!inRange(y-1, x-1) || !inRange(y+1, x+1)) {
             // 숲을 벗어나는 경우 모든 골렘이 숲을 빠져나갑니다
             resetMap();
         } else {
@@ -114,7 +114,7 @@ int main() {
         int x, d;
         cin >> x >> d; // 골렘의 출발 x좌표, 방향 d를 입력받습니다
         x--;
-        down(0, x, d, id);
+        down(1, x, d, id);
     }
     cout << answer << endl;
     return 0;
