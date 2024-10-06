@@ -241,7 +241,7 @@ void move산타(int 산타_idx)
         bool flag = false;
         for (int i = 0; i < P; i++)
         {
-            if (산타_idx == i)
+            if (산타_idx == i || 산타_vc[i].is탈락)
                 continue;
 
             int cur_산타_y = 산타_vc[i].y;
@@ -289,7 +289,8 @@ int main()
     {
 
         int idx = get가장가까운산타idx();
-        move루돌프(idx);
+        if (idx != -1)
+            move루돌프(idx);
 
         sort(산타_vc.begin(), 산타_vc.end(), comp산타원상복귀);
 
