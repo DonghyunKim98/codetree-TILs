@@ -117,7 +117,7 @@ void 산타_밀려남(int 산타_idx, int 방향, int power)
     int 충돌된_산타_idx;
     for (int i = 0; i < P; i++)
     {
-        if (산타_idx == i)
+        if (산타_idx == i || 산타_vc[i].is탈락)
             continue;
 
         int cur_산타_y = 산타_vc[i].y;
